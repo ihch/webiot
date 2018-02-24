@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class DiscoverInosisi(db.Model):
-    discover_time = db.Column(Datetime, primary_key = True)
+    discover_time = db.Column(DateTime, primary_key = True)
     position_x = db.Column(Float, primary_key=True)
     position_y = db.Column(Float, primary_key=True)
 
