@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class DiscoverInosisi(db.Model):
-    discover_time = db.Column(DateTime, primary_key = True)
+    discover_time = db.Column(String, primary_key = True)
     position_x = db.Column(Float, primary_key=True)
     position_y = db.Column(Float, primary_key=True)
 
@@ -31,7 +31,7 @@ def test():
 @app.route('/post/data', methods=['POST'])
 def data():
     data = DiscoverInosisi(
-            datetime.datetime.strptime(request.form['discover_time'], "%Y-%m-%D %H:%M:%S"),
+            request.form['discover_time'],
             float(request.form['position_x']),
             float(request.form['position_y'])
             )
