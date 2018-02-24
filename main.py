@@ -9,20 +9,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-class Position(db.Model):
-    def __init__(self, x, y, **kwargs):
-        super(Position, self).__init__(**kwargs)
-        self.x = x
-        self.y = y
-
-
 class DiscoverInosisi(db.Model):
     discover_time = db.Column(Integer, primary_key = True)
-    position = db.Column(Position, primary_key=True)
+    position_x = db.Column(Integer, primary_key=True)
+    position_y = db.Column(Integer, primary_key=True)
 
     def __init__(self, discover_time, position_x, position_y):
         self.discover_time = discover_time
-        self.position = Position(position_x, position_y)
+        self.position_x = position_x
+        self.position_y = position_y
 
     def __repr__(self):
         return "{}\n(x, y): ({}, {})".format(self.discover_time, self.position.x, self.position.y)
