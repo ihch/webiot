@@ -20,7 +20,7 @@ class DiscoverInosisi(db.Model):
         self.position_y = position_y
 
     def __repr__(self):
-        return "{}\n(x, y): ({}, {})".format(self.discover_time, self.position.x, self.position.y)
+        return "{}\n(x, y): ({}, {})".format(self.discover_time, self.position_x, self.position_y)
 
 
 @app.route('/test')
