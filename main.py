@@ -10,7 +10,8 @@ db = SQLAlchemy(app)
 
 
 class Position(db.Model):
-    def __init__(self, x, y):
+    def __init__(self, x, y, **kwargs):
+        super(Position, self).__init__(**kwargs)
         self.x = x
         self.y = y
 
@@ -38,6 +39,7 @@ def data():
     db.session.add(
             d
             )
+    db.session.commit()
     print(d)
 
 
