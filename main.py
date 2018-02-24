@@ -2,7 +2,7 @@ import os
 from collections import namedtuple
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float, DateTime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -10,9 +10,9 @@ db = SQLAlchemy(app)
 
 
 class DiscoverInosisi(db.Model):
-    discover_time = db.Column(Integer, primary_key = True)
-    position_x = db.Column(Integer, primary_key=True)
-    position_y = db.Column(Integer, primary_key=True)
+    discover_time = db.Column(Datetime, primary_key = True)
+    position_x = db.Column(Float, primary_key=True)
+    position_y = db.Column(Float, primary_key=True)
 
     def __init__(self, discover_time, position_x, position_y):
         self.discover_time = discover_time
@@ -30,9 +30,13 @@ def test():
 
 @app.route('/post/data', methods=['POST'])
 def data():
-    d = DiscoverInosisi(request.form['discover_time'], request.form['position_x'], request.form['position_y'])
+    data = DiscoverInosisi(
+            datetime.datetime.strptime(request.form['discover_time'], "%Y-%m-%D %H:%M:%S"),
+            float(request.form['position_x']),
+            float(request.form['position_y'])
+            )
     db.session.add(
-            d
+            data
             )
     db.session.commit()
     print(d)
