@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-class Position:
+class Position(db.Model):
     def __init__(self, x, y):
         self.x = x
         self.y = y
