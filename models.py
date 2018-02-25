@@ -1,8 +1,10 @@
-from sqlalchemy import Column, Integer, String, Float
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, Float, String
+
+Base = declarative_base()
 
 
-class VigilancePosition(db.Model):
+class VigilancePosition(Base):
     __tablename__ = "vigilanceposition"
 
     id = Column(Integer, primary_key=True)
@@ -20,7 +22,7 @@ class VigilancePosition(db.Model):
 self.id, self.latitude, self.longitude)
 
 
-class Sensor(db.Model):
+class Sensor(Base):
     __tablename__ = "sensors"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -35,9 +37,4 @@ class Sensor(db.Model):
         return "Sensor(id={}, latitude={}, longitude={})".format(
 self.id, self.latitude, self.longitude)
 
-
-if __name__ == '__main__':
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-    db = SQLAlchemy(app, echo=True)
 
