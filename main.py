@@ -34,7 +34,7 @@ def add_vigilance_position():
 @app.route('/add/sensor')
 def add_sensor():
     data = Sensor(
-            float(request.form['latitude'])
+            float(request.form['latitude']),
             float(request.form['longitude'])
             )
     add_db(data)
