@@ -28,9 +28,10 @@ def test():
 
 def add_vigilance_position():
     data = models.VigilancePosition(
-            request.args.get('discover_time'),
-            float(request.args.get('latitude')),
-            float(request.args.get('longitude'))
+            request.form['discover_time'],
+            float(request.form['latitude']),
+            float(request.form['longitude'])
+            request.form['youtube_id']
             )
     add_db(data)
     return "OK"
