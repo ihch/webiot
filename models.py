@@ -7,7 +7,7 @@ Base = declarative_base()
 class VigilancePosition(Base):
     __tablename__ = "vigilanceposition"
 
-    id = Column(Integer, primary_key=True)
+    # id = Column(Integer, primary_key=True)
     discover_time = Column(String(100))
     latitude = Column(Float, primary_key=True)
     longitude = Column(Float, primary_key=True)
@@ -27,7 +27,7 @@ class VigilancePosition(Base):
 class Sensor(Base):
     __tablename__ = "sensors"
 
-    id = Column(Integer, primary_key=True)
+    # id = Column(Integer, primary_key=True)
     latitude = Column(Float)
     longitude = Column(Float)
 
