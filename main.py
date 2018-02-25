@@ -25,7 +25,6 @@ def test():
 
 
 @app.route('/add/vigilance_position', methods=['POST'])
-
 def add_vigilance_position():
     data = models.VigilancePosition(
             request.form['discover_time'],
@@ -71,7 +70,7 @@ def add_db(new_cls):
 
 def trans_dict_vigilanse_position(vp):
     res = dict()
-    res['discover_time'] = vp.dicover_time
+    res['discover_time'] = vp.discover_time
     res['latitude'] = vp.latitude
     res['longitude'] = vp.longitude
     res['youtube_id'] = vp.youtube_id
