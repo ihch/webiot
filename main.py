@@ -50,20 +50,37 @@ def add_sensor():
 def get_vigilance_position():
     read = session.query(models.VigilancePosition).all()
     # return repr(read)
-    return jsonify(results=read)
+    res = [trans_dict_vigilanse_position(vp) for vp in read]
+    return jsonify(results=res)
 
 
 @app.route("/get/sensor_position", methods=['GET'])
 def get_sensor_position():
     read = session.query(models.Sensor).all()
     # return repr(read)
-    return jsonify(results=read)
+    res = [trans_dict_sensor(s) for s in read]
+    return jsonify(results=res)
 
 
 def add_db(new_cls):
     session.add(new_cls)
     # db.session.flush()
     session.commit()
+
+
+def trans_dict_vigilanse_position(vp):
+    res = dict()
+    res['discover_time'] = vp.dicover_time
+    res['latitude'] = vp.latitude
+    res['longitude'] = vp.longitude
+    return res
+
+
+def trans_dict_sensor(s):
+    res = dict()
+    res['latitude'] = s.latitude
+    res['longitude'] = s.longitude
+    return res
 
 
 if __name__ == '__main__':
