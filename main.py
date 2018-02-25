@@ -1,9 +1,11 @@
 import os
 from collections import namedtuple
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, Float, DateTime
 from models import VigilancePosition, Sensor
+from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 engine = create_engine(os.environ["DATABASE_URL"], echo=True)
