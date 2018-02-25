@@ -28,9 +28,9 @@ def test():
 
 def add_vigilance_position():
     data = models.VigilancePosition(
-            request.form['discover_time'],
-            float(request.form['latitude']),
-            float(request.form['longitude'])
+            request.args.get('discover_time'),
+            float(request.args.get('latitude')),
+            float(request.args.get('longitude'))
             )
     add_db(data)
     return "OK"
@@ -39,8 +39,8 @@ def add_vigilance_position():
 @app.route('/add/sensor', methods=['POST'])
 def add_sensor():
     data = models.Sensor(
-            float(request.form['latitude']),
-            float(request.form['longitude'])
+            float(request.args.get('latitude')),
+            float(request.args.get('longitude'))
             )
     add_db(data)
     return "OK"
