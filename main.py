@@ -7,7 +7,7 @@ from models import VigilancePosition, Sensor
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app, echo=True)
+db = SQLAlchemy(app)
 
 
 @app.route('/')
