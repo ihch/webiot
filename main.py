@@ -67,9 +67,9 @@ def get_sensor_position():
 
 
 def add_db(new_cls):
-    db.session.add(new_cls)
+    session.add(new_cls)
     # db.session.flush()
-    db.session.commit()
+    session.commit()
 
 
 if __name__ == '__main__':
