@@ -45,8 +45,8 @@ def add_sensor():
     print("data")
     print(request.data)
     data = models.Sensor(
-            float(request.args.get('latitude')),
-            float(request.args.get('longitude'))
+            float(request.form['latitude']),
+            float(request.form['longitude'])
             )
     add_db(data)
     return "OK"
