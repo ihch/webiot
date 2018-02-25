@@ -38,6 +38,12 @@ def add_vigilance_position():
 
 @app.route('/add/sensor', methods=['POST'])
 def add_sensor():
+    print(request.args.get('latitude'))
+    print(request.args.get('longitude'))
+    print("form")
+    print(request.form)
+    print("data")
+    print(request.data)
     data = models.Sensor(
             float(request.args.get('latitude')),
             float(request.args.get('longitude'))
