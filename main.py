@@ -74,6 +74,7 @@ def trans_dict_vigilanse_position(vp):
     res['discover_time'] = vp.dicover_time
     res['latitude'] = vp.latitude
     res['longitude'] = vp.longitude
+    res['youtube_id'] = vp.youtube_id
     return res
 
 
