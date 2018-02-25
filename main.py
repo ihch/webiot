@@ -8,7 +8,7 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
-engine = create_engine(os.environ["DATABASE_URL"], echo=True)
+engine = create_engine(os.environ["DATABASE_URL"])
 models.Base.metadata.bind = engine
 models.Base.metadata.create_all(engine)
 session = sessionmaker(bind=engine)()
