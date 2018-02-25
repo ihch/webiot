@@ -49,13 +49,15 @@ def add_sensor():
 @app.route("/get/vigilance_position", methods=['GET'])
 def get_vigilance_position():
     read = session.query(models.VigilancePosition).all()
-    return repr(read)
+    # return repr(read)
+    return jsonify(results=read)
 
 
 @app.route("/get/sensor_position", methods=['GET'])
 def get_sensor_position():
     read = session.query(models.Sensor).all()
-    return repr(read)
+    # return repr(read)
+    return jsonify(results=read)
 
 
 def add_db(new_cls):
