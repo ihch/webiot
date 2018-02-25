@@ -20,8 +20,8 @@ class VigilancePosition(Base):
         self.youtube_id = youtube_id
 
     def __repr__(self):
-        return "Sensor(id={}, latitude={}, longitude={}, youtube_id)"
-    .format(self.id, self.latitude, self.longitude, self.youtube_id)
+        return "Sensor(id={}, latitude={}, longitude={}, youtube_id)".format(
+                self.id, self.latitude, self.longitude, self.youtube_id)
 
 
 class Sensor(Base):
