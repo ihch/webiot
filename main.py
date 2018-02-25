@@ -35,7 +35,7 @@ def add_vigilance_position():
     add_db(data)
 
 
-@app.route('/add/sensor')
+@app.route('/add/sensor', methods=['POST'])
 def add_sensor():
     data = models.Sensor(
             float(request.form['latitude']),
@@ -45,13 +45,13 @@ def add_sensor():
 
 
 
-@app.route("/get/vigilance_position")
+@app.route("/get/vigilance_position", methods=['GET'])
 def get_vigilance_position():
     read = session.query(models.VigilancePosition).all()
     return repr(read)
 
 
-@app.route("/get/sensor_position")
+@app.route("/get/sensor_position", methods=['GET'])
 def get_sensor_position():
     read = session.query(models.Sensor).all()
     return repr(read)
