@@ -40,6 +40,19 @@ def add_sensor():
     add_db(data)
 
 
+
+@app.route("/get/vigilance_position")
+def get_vigilance_position():
+    read = VigilancePosition.query.all()
+    return repr(read)
+
+
+@app.route("/get/sensor_position")
+def get_sensor_position():
+    read = Sensor.query.all()
+    return repr(read)
+
+
 def add_db(new_cls):
     db.session.add(new_cls)
     # db.session.flush()
