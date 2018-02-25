@@ -33,6 +33,7 @@ def add_vigilance_position():
             float(request.form['longitude'])
             )
     add_db(data)
+    return "OK"
 
 
 @app.route('/add/sensor', methods=['POST'])
@@ -42,7 +43,7 @@ def add_sensor():
             float(request.form['longitude'])
             )
     add_db(data)
-
+    return "OK"
 
 
 @app.route("/get/vigilance_position", methods=['GET'])
