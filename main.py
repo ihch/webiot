@@ -2,15 +2,15 @@ import os
 from collections import namedtuple
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from models import VigilancePosition, Sensor
+import models
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 engine = create_engine(os.environ["DATABASE_URL"], echo=True)
-db.Base.metadata.bind = engine
-db.Base.metadata.create_all(engine)
+models.Base.metadata.bind = engine
+models.Base.metadata.create_all(engine)
 session = sessionmaker(bind=engine)()
 
 
@@ -27,7 +27,7 @@ def test():
 @app.route('/add/vigilance_position', methods=['POST'])
 
 def add_vigilance_position():
-    data = VigilancePosition(
+    data = models.VigilancePosition(
             request.form['discover_time'],
             float(request.form['latitude']),
             float(request.form['longitude'])
@@ -37,7 +37,7 @@ def add_vigilance_position():
 
 @app.route('/add/sensor')
 def add_sensor():
-    data = Sensor(
+    data = models.Sensor(
             float(request.form['latitude']),
             float(request.form['longitude'])
             )
@@ -47,13 +47,13 @@ def add_sensor():
 
 @app.route("/get/vigilance_position")
 def get_vigilance_position():
-    read = session.query(db.VigilancePosition).all()
+    read = session.query(models.VigilancePosition).all()
     return repr(read)
 
 
 @app.route("/get/sensor_position")
 def get_sensor_position():
-    read = session.query(db.Sensor).all()
+    read = session.query(models.Sensor).all()
     return repr(read)
 
 
